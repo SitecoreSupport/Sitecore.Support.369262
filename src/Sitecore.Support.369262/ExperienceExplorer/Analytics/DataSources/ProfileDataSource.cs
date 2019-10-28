@@ -79,7 +79,10 @@ namespace Sitecore.Support.ExperienceExplorer.Analytics.DataSources
             Profile trackedProfile)
         {
             var profileData =
-                new ProfileData(profileDefinition.Name);
+                new ProfileData(profileDefinition.Name)
+                {
+                    Count = trackedProfile.Count
+                };
             foreach (var keyValuePair in trackedProfile)
                 profileData.Values[keyValuePair.Key] = keyValuePair.Value;
             return _definitionManagerFactory.GetProfileDefinitionManager().MatchPattern(profileDefinition,
